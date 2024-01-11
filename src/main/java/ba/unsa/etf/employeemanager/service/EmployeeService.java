@@ -3,6 +3,7 @@ package ba.unsa.etf.employeemanager.service;
 import ba.unsa.etf.employeemanager.exceptions.UserNotFoundException;
 import ba.unsa.etf.employeemanager.model.Employee;
 import ba.unsa.etf.employeemanager.repo.EmployeeRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
 
@@ -36,6 +38,6 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(Long id) {
-        employeeRepo.deleteEmployeeById(id);
+        employeeRepo.deleteById(id);
     }
 }
